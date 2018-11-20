@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router, Route, Switch, Link,
 } from 'react-router-dom';
 import MoviesList from './MoviesList';
+import MovieDetails from './MovieDetails';
 
 import logo from './logo.svg';
 import './App.css';
@@ -17,15 +18,11 @@ const App = () => (
       </header>
       <Switch>
         <Route exact path="/" component={MoviesList} />
-        <Route path="/:id" component={Test} />
+        <Route path="/:id" component={MovieDetails} />
 
       </Switch>
     </div>
   </Router>
 );
 
-
-const Test = ({ match }) => (
-  <h1>{match.params.id}</h1>
-);
 export default App;
