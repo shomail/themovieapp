@@ -4,10 +4,10 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-
   state = {
-    movies: []
+    movies: [],
   }
+
 
   async componentDidMount() {
     try {
@@ -16,19 +16,19 @@ class App extends Component {
       const movies = await res.json();
 
       this.setState({ movies: movies.results });
-    } catch(e) {
+    } catch (e) {
       console.log(e);
-     }
-
+    }
   }
 
   render() {
+    const { movies } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        {this.state.movies.map( movie => <Movie key={movie.id} movie={movie} /> )}
+        {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
       </div>
     );
   }
