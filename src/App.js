@@ -3,27 +3,29 @@ import {
   BrowserRouter as Router, Route, Switch, Link,
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { applyMiddlewear, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import rootReducer from './rootReducer';
-import MoviesList from './MoviesList';
-import MovieDetails from './MovieDetails';
-import Toggle from './Toggle';
+import MoviesList from './movies/MoviesList';
+import MovieDetails from './movies/MovieDetails';
+import Toggle from './toggle/Toggle';
 
 import logo from './logo.svg';
 import './App.css';
 
 const middleware = [
   logger,
+  thunk,
 ];
 
 // middleware needs to be added to the store
 const store = createStore(
   rootReducer,
   {},
-  composeWithDevTools(applyMiddlewear(...middleware)),
+  composeWithDevTools(applyMiddleware(...middleware)),
 );
 
 const App = () => (
